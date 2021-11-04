@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(\Illuminate\Http\Request $request) {
     $foods = \App\Models\Food::$data;
-    return view('foodie-list')->with('food', $foods);
+    return view('foodie-list')->with('foods', $foods);
 })->name('index');
+
+Route::get('/{id}', function(\Illuminate\Http\Request $request,$id) {
+    $food = \App\Models\Food::$data[$id];
+    return view('foodie-detail')->with('food', $food);
+})->name('detail');
 
