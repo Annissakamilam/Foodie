@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', function(\Illuminate\Http\Request $request) {
+    $foods = \App\Models\Food::$data;
+    return view('foodie-list')->with('food', $foods);
+})->name('index');
+
