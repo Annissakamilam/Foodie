@@ -20,20 +20,10 @@
         <div class="list-makanan mt-2 mx-auto">
         <h3>Daftar Menu</h3>
             <ul>
-                <?php
-                foreach($foods as $key=>$food){
-                    ?>
                 
-                <li class="makanan">
-                        <img src="<?= $food['picture_url']?>" height="50">
-                        <a href="<?=route('detail',['id'=>$key])?>">
-                            <p><?= $food['title'] ?></p>
-                        </a>
-                        <p><?= $food['base_price']?></p>
-                    
-                </li>
-
-                <?php } ?>
+                @foreach($foods as $key=>$food)
+                    <x-item :food='$food' :key='$key'/>
+                @endforeach
             </ul>
         </div>
     </body>
